@@ -37,9 +37,21 @@ function onClickGetLargePicture(evt) {
   const instance = basicLightbox.create(`<img src="${originalImg}"/>`);
   instance.show();
 
-  ulItems.addEventListener("keydown", (evt) => {
+  ulItems.addEventListener("keydown", closeByEscp);
+
+  function closeByEscp(evt) {
     if (evt.code === "Escape") {
       instance.close();
     }
+  }
+  ulItems.removeEventListener("keydown", (evt) => {
+    if (evt.code === "Escape") {
+    }
   });
 }
+
+// (evt) => {
+//   if (evt.code === "Escape") {
+//     instance.close();
+//   }
+// };
